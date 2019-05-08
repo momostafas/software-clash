@@ -1,58 +1,265 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div>
+    <nav class="navbar navbar-dark bg-dark sc-navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Software Clash</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" class="sc-username">
+              <span class="glyphicon glyphicon-log-in">
+                <font-awesome-icon icon="user"/>
+              </span>
+              {{UserName}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <table class="table sc-table rounded container">
+      <caption>
+        Spring 19 class schedule
+        <p>
+          Sectoins with the
+          <span class="text-danger">RED</span> text are full and
+          <span class="text-danger">cannot be selected!</span> Click on it to request joining.
+        </p>
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">1st slot</th>
+          <th scope="col">2nd slot</th>
+          <th scope="col">3rd slot</th>
+          <th scope="col">4th slot</th>
+          <th scope="col">5th slot</th>
+          <th scope="col">6th slot</th>
+        </tr>
+      </thead>
+      <tbody v-for="(item, day) in schedule" :key="day">
+        <tr>
+          <th>{{days[day]}}</th>
+          <td v-for="(subitem, slot) in item" :key="slot">
+            <ul v-for="(subsubitem, lecture) in subitem" :key="lecture">
+              <li
+                v-if="subsubitem.valid"
+                :class="subsubitem.class"
+                :id="subsubitem.id"
+                @click="selectClass(day,slot,lecture)"
+              >{{subsubitem.name}}</li>
+              <li
+                v-if="!subsubitem.valid"
+                class="text-danger"
+                :id="subsubitem.id"
+                @click="requestClass(day,slot,lecture)"
+              >{{subsubitem.name}}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <button class="btn btn-primary float-right" @click="submitFinal()">Submit</button>
+    </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import VueToast from "vue-toast-notification";
+import "vue-toast-notification/dist/index.css";
+Vue.use(VueToast);
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  created() {
+    this.receiveNotificatoin();
+  },
+  data() {
+    return {
+      UserName: "Mohamed Mostafa Mostafa",
+      days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      schedule: [
+        [
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: false, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ]
+        ],
+        [
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ]
+        ],
+        [
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ]
+        ],
+        [
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ]
+        ],
+        [
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ],
+          [
+            { name: "ECEN 203", id: "12", valid: true, class: "inactiveClass" },
+            { name: "CSES 203", id: "13", valid: true, class: "inactiveClass" }
+          ]
+        ]
+      ]
+    };
+  },
+  methods: {
+    receiveNotificatoin() {
+      Vue.$toast.error(
+        "Some students are asking to join CS201-4 that you are enrolled in and it`s full. so, if you can recreate your schedule and register in another class would be appreciated.",
+        { duration: 20000, position: "top-left" }
+      );
+    },
+    selectClass(day, slot, lecture) {
+      if (this.schedule[day][slot][lecture].class == "inactiveClass") {
+        this.schedule[day][slot][lecture].class = "activeClass";
+      } else if (this.schedule[day][slot][lecture].class == "activeClass") {
+        this.schedule[day][slot][lecture].class = "inactiveClass";
+      }
+      console.log("this", day, slot, lecture);
+      console.log("day", this.schedule[day][slot][lecture]);
+    },
+    requestClass(day, slot, lecture) {
+      this.schedule[day][slot][lecture].valid = true;
+      this.schedule[day][slot][lecture].class = "text-primary";
+      Vue.$toast.success("Request Sent Succefully!", { position: "top-left" });
+    },
+    submitFinal() {
+      Vue.$toast.success("Submitted successfully!", { position: "top-left" });
+      this.schedule.forEach(day => {
+        day.forEach(slot => {
+          slot.forEach(lecture => {
+            lecture.class = "inactiveClass";
+          });
+        });
+      });
+    }
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.sc-username {
+  color: #ffffff;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.sc-table {
+  margin-top: 60px;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+  list-style: none;
+  cursor: pointer;
 }
-a {
-  color: #42b983;
+.activeClass {
+  background-color: yellow;
 }
 </style>

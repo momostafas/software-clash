@@ -20,7 +20,7 @@
 
     <table v-if="auth" class="table sc-table rounded container">
       <caption>
-        Spring 19 class schedule
+        Fall 20 class schedule
         <p>
           Sectoins with the
           <span class="text-danger">RED</span> text are full and
@@ -83,9 +83,411 @@ export default {
     return {
       UserName: "Mohamed Mostafa Mostafa",
       days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-      schedule: [],
+      schedule:  [
+    [
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: false,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: false,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: false,
+                class: "inactiveClass"
+            }
+        ]
+    ],
+    [
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: false,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: false,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ]
+    ],
+    [
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ]
+    ],
+    [
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: false,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ]
+    ],
+    [
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: false,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: true,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: false,
+                class: "inactiveClass"
+            }
+        ],
+        [{
+                name: "ECEN 203",
+                id: "12",
+                valid: false,
+                class: "inactiveClass"
+            },
+            {
+                name: "CSES 203",
+                id: "13",
+                valid: true,
+                class: "inactiveClass"
+            }
+        ]
+    ]
+]
+,
       courses: [],
-      auth: false,
+      auth: true,
       student: ""
     };
   },
